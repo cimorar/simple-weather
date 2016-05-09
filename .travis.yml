@@ -6,3 +6,4 @@ before_script:
 cache:
   directories: 
     - vendor
+script: phpunit test/*Test.php
