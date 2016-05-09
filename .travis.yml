@@ -1,11 +1,11 @@
 language: php
 php:
-  - '5.6'
+- '5.6'
 before_script:
-  - composer install
+- composer install
 cache:
-  directories: 
-    - vendor
-script: phpunit test/*Test.php
-after_success:
-    DOCKER_TRIGGER
+  directories:
+  - vendor
+script: phpunit test/*Test.php 
+deploy:
+    secure: I6Un6u0Fo0U9+xhcXlYR5k0ytNIaX9Kt7Nduuc+iEiG9GF8yp3ARRyS9CFpbWi4pjG4fXalI8RKJqydwFhpFXIAKU26d64ATB33hW3eLMCoR//ITeWn79JK+yXWn0NyqODLnZlH9E0K65kt5sJ949U8JOCB01gMrvYDQmG7485g0GCoGqx20M/T0MnN4xdjowcARdQ2HApeW7ms6ZIcYR8A8etAsIh2RZlwmZJal4uTbMexduaS50t+MwpKiIpjcLid0yvUL3IZ99GftdFSn08qAV966MIcCB8zwB+ST1bl9/VhXVMLayLPT9r00XvAwXiHHDXKO0mi2wv/+zZAGkofBhVTIlObPWt32DxREZud0izMwCt9e3xmv+MPpopnHqfO1rmyk6QZGiqBNM+UKNPdUzO+fgceup1yOdU/LM5ay8RleknvNXfty2m1L9R/qKoBGXZhojqzliCv4dLTf7xyq+6PHNr1yqkxjoAlCTz8y3iU52aqhHKWdPUPwvXIUbqW6VHCKP48YXhr1u4dGT+IiXRCwwq7cHkHfiXEnukBq9ZCYXOaHWCYxVf9S4YurLujA6ypiAE5toz3RgHRO2i4u721Cl7QOT4BIMZXwbh2DMnBdBLM8UShS50tIokQDe4o0NLMXId00gROrGx9Za3+uWdjubEQFbbwG0uAniPQ=
