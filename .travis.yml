@@ -8,4 +8,4 @@ cache:
     - vendor
 script: phpunit test/*Test.php
 after_success:
-    "curl -H \"Content-Type: application/json\" --data '{\"build\": true}' -X POST https://registry.hub.docker.com/u/missdefying/simple-weather/trigger/7cb6fbff-697d-472d-af99-039cd3b01120/
+    DOCKER_TRIGGER
