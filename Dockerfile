@@ -2,5 +2,5 @@
 
 FROM richarvey/nginx-php-fpm
 
-# Copy app to /nginx web dir
-COPY . /usr/share/nginx/html
+# ADD app files to nginx web dir
+ADD * /usr/share/nginx/html
