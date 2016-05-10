@@ -2,5 +2,6 @@
 
 FROM richarvey/nginx-php-fpm
 
-# ADD app files to nginx web dir
-ADD * /usr/share/nginx/html/
+# COPY app files to nginx web dir
+COPY index.php /usr/share/nginx/html/
+COPY src/* /usr/share/nginx/html/
