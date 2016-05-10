@@ -3,4 +3,4 @@
 FROM richarvey/nginx-php-fpm
 
 # ADD app files to nginx web dir
-ADD * /usr/share/nginx/html
+ADD * /usr/share/nginx/html/
