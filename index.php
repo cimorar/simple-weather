@@ -1,5 +1,5 @@
 <?php
-require('src/weather.php');
+require('src/WeatherRequest.php');
 
 if(isset($_POST['airport'])) {
   $request = new WeatherRequest($_POST['airport']);
