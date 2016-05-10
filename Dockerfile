@@ -62,17 +62,12 @@ mkdir -p /etc/nginx/ssl/
 ADD conf/nginx-site.conf /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
-# Add git commands to allow container updating
-ADD scripts/pull /usr/bin/pull
-ADD scripts/push /usr/bin/push
-RUN chmod 755 /usr/bin/pull && chmod 755 /usr/bin/push
-
 # Supervisor Config
 ADD conf/supervisord.conf /etc/supervisord.conf
 
 # Start Supervisord
-ADD scripts/start.sh /start.sh
-RUN chmod 755 /start.sh
+#ADD scripts/start.sh /start.sh
+#RUN chmod 755 /start.sh
 
 # add test PHP file
 ADD src/index.php /usr/share/nginx/html/index.php
@@ -82,7 +77,7 @@ RUN chown -Rf www-data.www-data /usr/share/nginx/html/
 EXPOSE 443
 EXPOSE 80
 
-CMD ["/bin/bash", "/start.sh"]
+#CMD ["/bin/bash", "/start.sh"]
 
 # COPY app files to nginx web dir
 RUN mkdir /usr/share/nginx/html/simple-weather
