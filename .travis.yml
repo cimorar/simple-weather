@@ -8,4 +8,9 @@ cache:
   - vendor
 script: phpunit test/*Test.php 
 after_success:
-  - $DOCKER_TRIGGER
+# notify Docker Hub to make a new build
+- >
+  [ "$TRAVIS_BRANCH" == "master" ]
+  && curl -X POST -H "Content-Type: application/json"
+  --data '{"docker_tag_name": "latest"}' $DOCKER_URL
+
