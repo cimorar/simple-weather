@@ -7,9 +7,6 @@ FROM ubuntu:14.04.4
 RUN dpkg-divert --local --rename --add /sbin/initctl
 RUN ln -sf /bin/true /sbin/initctl
 
-# Let the conatiner know that there is no tty
-ENV DEBIAN_FRONTEND noninteractive
-
 # Update base image
 # Add sources for latest nginx
 # Install software requirements
@@ -52,32 +49,11 @@ sed -i -e "s/pm.max_requests = 500/pm.max_requests = 200/g" /etc/php5/fpm/pool.d
 RUN sed -i -e "s/;listen.mode = 0660/listen.mode = 0750/g" /etc/php5/fpm/pool.d/www.conf && \
 find /etc/php5/cli/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
-# mycrypt conf
-RUN php5enmod mcrypt
-
-# nginx site conf
-RUN rm -Rf /etc/nginx/conf.d/* && \
-rm -Rf /etc/nginx/sites-available/default && \
-mkdir -p /etc/nginx/ssl/
-ADD conf/nginx-site.conf /etc/nginx/sites-available/default.conf
-RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
-
-# Supervisor Config
-ADD conf/supervisord.conf /etc/supervisord.conf
-
-# Start Supervisord
-#ADD scripts/start.sh /start.sh
-#RUN chmod 755 /start.sh
-
-# add test PHP file
-ADD src/index.php /usr/share/nginx/html/index.php
 RUN chown -Rf www-data.www-data /usr/share/nginx/html/
 
 # Expose Ports
 EXPOSE 443
 EXPOSE 80
-
-#CMD ["/bin/bash", "/start.sh"]
 
 # COPY app files to nginx web dir
 RUN mkdir /usr/share/nginx/html/simple-weather
