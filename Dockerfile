@@ -34,7 +34,11 @@ ADD conf/supervisord.conf /etc/supervisord.conf
 ADD scripts/start.sh /start.sh
 RUN chmod 755 /start.sh
 
-# private expose
+# expose port 80
 EXPOSE 80
+
+#add project files
+RUN mkdir /usr/share/nginx/html/simple-weather
+COPY . /usr/share/nginx/html/simple-weather/ 
 
 CMD ["/bin/bash", "/start.sh"]
