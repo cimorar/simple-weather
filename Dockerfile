@@ -35,6 +35,7 @@ ADD scripts/start.sh /start.sh
 RUN chmod 755 /start.sh
 
 # expose port 80
+EPXOSE 443
 EXPOSE 80
 
 #add project files
