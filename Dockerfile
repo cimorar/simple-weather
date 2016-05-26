@@ -11,7 +11,7 @@ RUN apt-get update
 RUN apt-get -y upgrade
 
 # Basic Requirements
-RUN apt-get -y install supervisor nginx php5-fpm curl git unzip
+RUN apt-get -y install supervisor nginx php5-fpm curl git unzip php5-curl
 
 # nginx config
 RUN sed -i -e"s/keepalive_timeout\s*65/keepalive_timeout 2/" /etc/nginx/nginx.conf
